@@ -22,12 +22,14 @@ $(document).ready(function() {
   })
 
   $('#calc').click(function() {
-    var re = /[^-+*0-9]/g
     array.push($('#screen').text())
-    var string = array = array.join('').replace('=', '').replace(/x/g, '*').replace(re, '/')
+    var string = array = array.join('').replace('=', '').replace(/x/g, '*').replace(/[^-+*0-9]/g, '/')
     console.log('string = ' + string)
-    var result = eval(string)
-    console.log(result)
+    if (eval(string)%1===0) {
+      var result = eval(string)
+    } else {
+      var result = eval(string).toFixed(6)
+    }
     $('#screen').text(result)
     array = []
   });
