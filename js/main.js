@@ -1,6 +1,5 @@
 $(document).ready(function() {
 
-  var math = ''
   var array = []
 
   $('.buttons > span').click(function() {
@@ -20,19 +19,12 @@ $(document).ready(function() {
 
   $('#calc').click(function() {
     array.push($('#screen').text())
-    var string = array = array.join('').replace('=', '').replace('x', '*').replace('&divide;', '/')
+    var string = array = array.join('').replace('=', '').replace('x', '*').replace('\u00F7', '/')
     console.log('string = ' + string)
     var result = eval(string)
     console.log(result)
     $('#screen').text(result)
     array = []
   });
-
-  // $('#calc').click(function() {
-  //   math = $('#screen').text().replace('=', '').replace('x', '*').replace('&divide;', '/')
-  //   math = eval(math)
-  //   console.log(math)
-  //   $('#screen').text(math)
-  // });
 
 });
