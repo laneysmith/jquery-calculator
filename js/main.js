@@ -1,8 +1,7 @@
 $(document).ready(function() {
 
-  var num1 = 0
-  var num2 = 0
   var math = ''
+  var array = []
 
   $('.buttons > span').click(function() {
     $('#screen').append($(this).text())
@@ -10,13 +9,30 @@ $(document).ready(function() {
 
   $('#cancel').click(function() {
     $('#screen').empty()
+    array = []
   });
 
+  $('.operator').not('#calc').click(function() {
+    array.push($('#screen').text())
+    $('#screen').empty()
+    console.log(array)
+  })
+
   $('#calc').click(function() {
-    math = $('#screen').text().replace('=', '').replace('x', '*')
-    math = eval(math)
-    console.log(math)
-    $('#screen').text(math)
+    array.push($('#screen').text())
+    var string = array = array.join('').replace('=', '').replace('x', '*').replace('&divide;', '/')
+    console.log('string = ' + string)
+    var result = eval(string)
+    console.log(result)
+    $('#screen').text(result)
+    array = []
   });
+
+  // $('#calc').click(function() {
+  //   math = $('#screen').text().replace('=', '').replace('x', '*').replace('&divide;', '/')
+  //   math = eval(math)
+  //   console.log(math)
+  //   $('#screen').text(math)
+  // });
 
 });
