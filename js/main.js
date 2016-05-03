@@ -6,6 +6,10 @@ $(document).ready(function() {
     $('#screen').append($(this).text())
   });
 
+  $('#zero').click(function() {
+    $('#screen').append($(this).text())
+  });
+
   $('#cancel').click(function() {
     $('#screen').empty()
     array = []
