@@ -22,8 +22,9 @@ $(document).ready(function() {
   })
 
   $('#calc').click(function() {
+    var re = /[^-+*0-9]/g
     array.push($('#screen').text())
-    var string = array = array.join('').replace('=', '').replace('x', '*').replace('\u00F7', '/')
+    var string = array = array.join('').replace('=', '').replace(/x/g, '*').replace(re, '/')
     console.log('string = ' + string)
     var result = eval(string)
     console.log(result)
